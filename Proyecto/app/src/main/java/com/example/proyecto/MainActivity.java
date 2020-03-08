@@ -12,6 +12,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toast.makeText(getApplicationContext(), "Cambio de ejemplo dos", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Cambio de ejemplo tres", Toast.LENGTH_LONG).show();
     }
 }
