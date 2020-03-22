@@ -1,7 +1,6 @@
-﻿
-<?php
+﻿<?php
 
-	$c = mysqli_connect("localhost", "id12924384_vanessa", "vanessasantospuente", "id12924384_proyectodam");
+	$c = mysqli_connect("localhost", "vanessa", "vanessasantospuente", "proyectodam");
 	
 	if($c==null)
 	{
