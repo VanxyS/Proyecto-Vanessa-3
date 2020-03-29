@@ -2,17 +2,21 @@
 	$booleano = false;
 
 	//Recibimos el nombre, la contrasenia y el email
-	$nombre=$_POST["nombre"];
-	$contrasenia=$_POST["contrasenia"];
-	$email=$_POST["email"];
+	$nombre=$_GET["nombre"];
+	$contrasenia=$_GET["contrasenia"];
+	$email=$_GET["email"];
 
-	$contraseniaEncriptada = password_hash($contrasenia, PASSWORD_DEFAULT);
+	$cipher_method = 'aes-128-ctr';
+	$enc_key = openssl_digest(php_uname(), 'SHA256', TRUE);
+	$enc_iv = openssl_random_pseudo_bytes(openssl_cipher_iv_length($cipher_method));
+	$crypted_token = openssl_encrypt($contrasenia, $cipher_method, $enc_key, 0, $enc_iv) . "::" . bin2hex($enc_iv);
+	unset($contrasenia, $cipher_method, $enc_key, $enc_iv);
 
 	//Conectamos a la base de datos
 	$conexion= mysqli_connect("localhost", "vanessa", "vanessasantospuente", "proyectodam");
 
 	//Hacemos una consulta para comprobar si existe algun usuario con ese nombre
-	$consulta="SELECT * FROM usuarios WHERE nombre LIKE '$nombre'";
+	$consulta="SELECT * FROM usuarios WHERE (nombre LIKE '$nombre' OR email LIKE '$nombre')";
 	$result = mysqli_query($conexion, $consulta);
 
 	if($result)
@@ -22,7 +26,7 @@
 		if($filas == 0)
 		{
 			//Insertarmos los datos (por defecto los nuevos registros son usuarios normales)
-			$sql="INSERT INTO usuarios (nombre, contrasenia, email, idRol) VALUES ('$nombre', '$contraseniaEncriptada','$email', 1)";					
+			$sql="INSERT INTO usuarios (nombre, contrasenia, email, idRol) VALUES ('$nombre', '$crypted_token','$email', 1)";					
 			$resultado=mysqli_query($conexion, $sql);
 
 			//Si se ha insertado el usuario devolvemos un true

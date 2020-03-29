@@ -26,7 +26,6 @@
 		{
 			$filas = mysqli_num_rows($result);
 
-
 			if($filas > 0)
 			{
 				
