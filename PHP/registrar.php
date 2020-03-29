@@ -16,7 +16,7 @@
 	$conexion= mysqli_connect("localhost", "vanessa", "vanessasantospuente", "proyectodam");
 
 	//Hacemos una consulta para comprobar si existe algun usuario con ese nombre
-	$consulta="SELECT * FROM usuarios WHERE (nombre LIKE '$nombre' OR email LIKE '$nombre')";
+	$consulta="SELECT * FROM usuarios WHERE (nombre LIKE '$nombre' OR email LIKE '$email')";
 	$result = mysqli_query($conexion, $consulta);
 
 	if($result)

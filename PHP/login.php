@@ -1,6 +1,6 @@
-	 <?php
-	$usu = $_POST['usuario'];
-	$contrasenia = $_POST['contrasenia'];
+<?php
+	$usu = $_GET['usuario'];
+	$contrasenia = $_GET['contrasenia'];
 	$idRol = 0;
 	$booleano = false;
 	$roles = '';
@@ -32,7 +32,15 @@
 				//echo json_encode($filas, JSON_UNESCAPED_UNICODE);
 				$row = mysqli_fetch_assoc($result);
 
-				if(password_verify($contrasenia, $row['contrasenia']))
+				$contraseniaBD = $row['contrasenia'];
+
+				list($contraseniaBD, $enc_iv) = explode("::", $contraseniaBD);;
+				$cipher_method = 'aes-128-ctr';
+				$enc_key = openssl_digest(php_uname(), 'SHA256', TRUE);
+				$token = openssl_decrypt($contraseniaBD, $cipher_method, $enc_key, 0, hex2bin($enc_iv));
+				unset($contraseniaBD, $cipher_method, $enc_key, $enc_iv);
+
+				if($token == $contrasenia)
 				{
 					$booleano = true;
 
