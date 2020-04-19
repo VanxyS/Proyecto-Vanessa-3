@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/images"
+    tools:context=".Fragments.ModificarCorro">
+
+    <include
+        android:id="@+id/include3"
+        layout="@layout/drawer_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ListView
+        android:id="@+id/listCorrosActuales"
+        android:layout_width="match_parent"
+        android:layout_height="390dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include3">
+
+    </ListView>
+
+    <EditText
+        android:id="@+id/nombrePuebloModificar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="99dp"
+        android:layout_marginLeft="99dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="99dp"
+        android:layout_marginRight="99dp"
+        android:layout_marginBottom="5dp"
+        android:background="#FFFFFF"
+        android:ems="10"
+        android:hint="Pueblo"
+        android:inputType="textPersonName"
+        android:paddingTop="20px"
+        app:layout_constraintBottom_toTopOf="@+id/nuevoNombrePueblo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listCorrosActuales" />
+
+    <EditText
+        android:id="@+id/nuevoNombrePueblo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="99dp"
+        android:layout_marginLeft="99dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="99dp"
+        android:layout_marginRight="99dp"
+        android:layout_marginBottom="5dp"
+        android:background="#FFFFFF"
+        android:ems="10"
+        android:hint="Nuevo Pueblo"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/diaCorroModificar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nombrePuebloModificar" />
+
+    <EditText
+        android:id="@+id/diaCorroModificar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="99dp"
+        android:layout_marginLeft="99dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="99dp"
+        android:layout_marginRight="99dp"
+        android:layout_marginBottom="9dp"
+        android:background="#FFFFFF"
+        android:ems="10"
+        android:hint="dd/mm/yy"
+        android:inputType="textPersonName"
+        android:paddingTop="20px"
+        app:layout_constraintBottom_toTopOf="@+id/horaCorroModificar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nuevoNombrePueblo" />
+
+    <EditText
+        android:id="@+id/horaCorroModificar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="99dp"
+        android:layout_marginLeft="99dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="99dp"
+        android:layout_marginRight="99dp"
+        android:layout_marginBottom="5dp"
+        android:background="#FFFFFF"
+        android:ems="10"
+        android:hint="hh:mm:ss"
+        android:inputType="textPersonName"
+        android:paddingTop="20px"
+        app:layout_constraintBottom_toTopOf="@+id/lugarCorroModificar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/diaCorroModificar" />
+
+    <EditText
+        android:id="@+id/lugarCorroModificar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="99dp"
+        android:layout_marginLeft="99dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="99dp"
+        android:layout_marginRight="99dp"
+        android:layout_marginBottom="5dp"
+        android:background="#FFFFFF"
+        android:ems="10"
+        android:hint="Lugar"
+        android:inputType="textPersonName"
+        android:paddingTop="20px"
+        app:layout_constraintBottom_toTopOf="@+id/botonCorroModificar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/horaCorroModificar" />
+
+    <Button
+        android:id="@+id/botonCorroModificar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="162dp"
+        android:layout_marginLeft="162dp"
+        android:layout_marginEnd="162dp"
+        android:layout_marginRight="162dp"
+        android:layout_marginBottom="16dp"
+        android:text="Modificar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.545"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -26,6 +26,8 @@
         <activity android:name=".PantallaPrincipalUsuario"/>
         <activity android:name=".Registro"/>
         <activity android:name=".RecuperarContrasenia"/>
+        <activity android:name=".Drawer" android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".RegistrarLuchador" android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

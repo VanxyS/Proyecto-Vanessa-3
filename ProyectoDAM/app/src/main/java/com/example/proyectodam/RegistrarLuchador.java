@@ -1,59 +1,50 @@
 package com.example.proyectodam;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
-public class Registro extends Activity
+public class RegistrarLuchador extends Activity
 {
-    APIMethods api = new APIMethods();
+    APIMethods apiMethods = new APIMethods();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.registro);
+        setContentView(R.layout.registrar_luchador);
 
         Button registro = (Button) findViewById(R.id.registro);
         final EditText editnombre = findViewById(R.id.diaAniadir);
+        final EditText nombreLuchador = findViewById(R.id.nombreLuchador);
+        final EditText editApellido = findViewById(R.id.apellidoLuchador);
         final EditText editcontrasenia = findViewById(R.id.horaAniadir);
         final EditText editemail = findViewById(R.id.editText);
-        TextView textView = findViewById(R.id.textLuchador);
 
         registro.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                String nombre = editnombre.getText().toString();
+                String nombreUsuario = editnombre.getText().toString();
+                String nombre = nombreLuchador.getText().toString();
+                String apellido = editApellido.getText().toString();
                 String contrasenia = editcontrasenia.getText().toString();
                 String email = editemail.getText().toString();
 
-                if(!nombre.isEmpty() && !contrasenia.isEmpty() && !email.isEmpty())
+                if(!nombre.isEmpty() && !contrasenia.isEmpty() && !email.isEmpty() && !nombreUsuario.isEmpty() && !email.isEmpty()&& !apellido.isEmpty())
                 {
-                    api.registrarUsuario(Registro.this, "http://192.168.1.39/ProyectoDAM/registrar.php",nombre, contrasenia, email);
+                    //apiMethods.registrarLuchador(RegistrarLuchador.this, "http://192.168.1.39/ProyectoDAM/registrar.php",nombreUsuario, contrasenia, email, nombre, apellido);
                 }
                 else
                 {
                     Toast.makeText(getApplicationContext(), "No se admiten campos vacios", Toast.LENGTH_LONG).show();
                 }
-            }
-        });
-
-        textView.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                Intent intent = new Intent(getApplicationContext(), RegistrarLuchador.class);
-                startActivity(intent);
             }
         });
     }

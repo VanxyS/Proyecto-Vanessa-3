@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="General">
+        <menu>
+            <item
+                android:icon="@drawable/ic_home_black_24dp"
+                android:title="Inicio"
+                android:id="@+id/inicio"/>
+            <item android:title="Luchadores"
+                android:id="@+id/luchadores"/>
+            <item android:title="Corros"
+                android:id="@+id/corrosBasico"/>
+            <item android:title="Clasificación"
+                android:id="@+id/clasificacion"/>
+            <item
+                android:id="@+id/salir"
+                android:title="Salir" />
+        </menu>
+    </item>
+    <item
+        android:title="Administrador"
+        android:visible="false"
+        android:id="@+id/administrador">
+        <menu>
+            <item
+                android:id="@+id/modificarPermisos"
+                android:title="Modificar permisos" />
+
+            <item
+                android:id="@+id/eliminarUsuario"
+                android:title="Eliminar usuario" />
+
+            <item
+                android:id="@+id/nuevoCorro"
+                android:title="Añadir corro" />
+
+            <item
+                android:id="@+id/eliminarCorro"
+                android:title="Eliminar corro" />
+
+            <item
+                android:id="@+id/modificarCorro"
+                android:title="Modificar corro" />
+
+            <item
+                android:id="@+id/aniadirLuchador"
+                android:title="Añadir luchador" />
+
+            <item
+                android:id="@+id/eliminarLuchador"
+                android:title="Eliminar luchador" />
+
+            <item
+                android:id="@+id/modificarLuchador"
+                android:title="Modificar luchador" />
+
+            <item
+                android:id="@+id/cambiarPuntuacion"
+                android:title="Cambiar Puntuación" />
+
+            <item
+                android:id="@+id/quitarLuchador"
+                android:title="Quitar Luchador" />
+
+            <item
+                android:id="@+id/salirAdministrador"
+                android:title="Salir" />
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/luchador"
+        android:title="Luchador"
+        android:visible="false">
+        <menu>
+            <item
+                android:id="@+id/inscribirseCorro"
+                android:title="Incribirse en un corro" />
+
+            <item
+                android:id="@+id/quitarseCorro"
+                android:title="Quitarse de un corro" />
+        </menu>
+    </item>
+
+</menu>

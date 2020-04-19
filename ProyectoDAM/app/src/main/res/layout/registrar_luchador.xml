@@ -18,9 +18,34 @@
         android:id="@+id/diaAniadir"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="20px"
         android:background="#FFFFFF"
         android:ems="10"
-        android:hint="Nombre de usuario "
+        android:hint="Nombre de usuario"
+        android:inputType="textPersonName"
+        android:paddingTop="20px" />
+
+    <EditText
+        android:id="@+id/nombreLuchador"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20px"
+        android:layout_marginBottom="20px"
+        android:background="#FFFFFF"
+        android:ems="10"
+        android:hint="Nombre del luchador"
+        android:inputType="textPersonName"
+        android:paddingTop="20px" />
+
+    <EditText
+        android:id="@+id/apellidoLuchador"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20px"
+        android:layout_marginBottom="20px"
+        android:background="#FFFFFF"
+        android:ems="10"
+        android:hint="Apellido del luchador"
         android:inputType="textPersonName"
         android:paddingTop="20px" />
 
@@ -47,15 +72,6 @@
         android:hint="Email"
         android:inputType="textEmailAddress"
         android:paddingTop="20px" />
-
-    <TextView
-        android:id="@+id/textLuchador"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5pt"
-        android:gravity="center"
-        android:text="¿Eres un luchador?"
-        android:textColor="#03A9F4" />
 
     <Button
         android:id="@+id/registro"
