@@ -34,7 +34,7 @@ public class AniadirLuchador extends Fragment
 
         final ListView listView = view.findViewById(R.id.listLuchadores);
 
-        apiMethods.listarLuchadores("http://192.168.1.39/ProyectoDAM/listaLuchadores.php", listView, getActivity().getApplicationContext());
+        apiMethods.listarLuchadores("http://192.168.1.35/ProyectoDAM/listaLuchadores.php", listView, getActivity().getApplicationContext());
 
         button.setOnClickListener(new View.OnClickListener()
         {
@@ -44,7 +44,7 @@ public class AniadirLuchador extends Fragment
                 if(!nombre.getText().toString().isEmpty() && !apellido1.getText().toString().isEmpty() && !apellido2.getText().toString().isEmpty()
                         &&!edad.getText().toString().isEmpty() && !peso.getText().toString().isEmpty() && !categoria.getText().toString().isEmpty())
                 {
-                    apiMethods.registrarLuchador(getActivity().getApplicationContext(),"http://192.168.1.39/ProyectoDAM/registrarLuchador.php", nombre.getText().toString(),
+                    apiMethods.registrarLuchador(getActivity().getApplicationContext(),"http://192.168.1.35/ProyectoDAM/registrarLuchador.php", nombre.getText().toString(),
                             apellido1.getText().toString(), apellido2.getText().toString(), edad.getText().toString(), peso.getText().toString(), categoria.getText().toString());
 
                     apiMethods.listarLuchadores("http://192.168.1.39/ProyectoDAM/listaLuchadores.php", listView, getActivity().getApplicationContext());
@@ -53,7 +53,7 @@ public class AniadirLuchador extends Fragment
             }
         });
 
-        apiMethods.listarLuchadores("http://192.168.1.39/ProyectoDAM/listaLuchadores.php", listView, getActivity().getApplicationContext());
+        apiMethods.listarLuchadores("http://192.168.1.35/ProyectoDAM/listaLuchadores.php", listView, getActivity().getApplicationContext());
 
         // Inflate the layout for this fragment
         return view;

@@ -29,7 +29,7 @@ public class EliminarUsuario extends Fragment
 
         final ListView listView = view.findViewById(R.id.listUsuarios);
 
-        apiMethods.listarUsuarios(getActivity().getApplicationContext(), "http://192.168.1.39/ProyectoDAM/listaUsuarios.php", listView);
+        apiMethods.listarUsuarios(getActivity().getApplicationContext(), "http://192.168.1.35/ProyectoDAM/listaUsuarios.php", listView);
 
         final EditText usuario = view.findViewById(R.id.usuarioEliminar);
 
@@ -43,9 +43,9 @@ public class EliminarUsuario extends Fragment
                 if(!usuario.getText().toString().isEmpty())
                 {
                     String nombre = usuario.getText().toString();
-                    apiMethods.eliminarUsuario(getActivity().getApplicationContext(), "http://192.168.1.39/ProyectoDAM/eliminarUsuario.php", nombre);
+                    apiMethods.eliminarUsuario(getActivity().getApplicationContext(), "http://192.168.1.35/ProyectoDAM/eliminarUsuario.php", nombre);
 
-                    apiMethods.listarUsuarios(getActivity().getApplicationContext(), "http://192.168.1.39/ProyectoDAM/listaUsuarios.php", listView);
+                    apiMethods.listarUsuarios(getActivity().getApplicationContext(), "http://192.168.1.35/ProyectoDAM/listaUsuarios.php", listView);
                 }
                 else
                 {
@@ -53,6 +53,8 @@ public class EliminarUsuario extends Fragment
                 }
             }
         });
+
+        apiMethods.listarUsuarios(getActivity().getApplicationContext(), "http://192.168.1.35/ProyectoDAM/listaUsuarios.php", listView);
 
         // Inflate the layout for this fragment
         return view;

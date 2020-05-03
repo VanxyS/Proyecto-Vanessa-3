@@ -31,21 +31,16 @@ import java.util.List;
 
 public class LuchadoresFragment extends Fragment
 {
-    DrawerLayout drawerLayout;
-    FragmentManager fragmentManager;
-    ActionBarDrawerToggle actionBarDrawerToggle;
-    NavigationView navigationView;
-    androidx.appcompat.widget.Toolbar toolbar;
     ListView ligeros, medios, pesados;
 
-    public LuchadoresFragment(DrawerLayout drawer, FragmentManager fragmentManager, ActionBarDrawerToggle actionBarDrawerToggle, NavigationView navigationView, Toolbar toolbar)
-    {
-        this.drawerLayout = drawer;
-        this.actionBarDrawerToggle = actionBarDrawerToggle;
-        this.fragmentManager = fragmentManager;
-        this.navigationView = navigationView;
-        this.toolbar = toolbar;
-    }
+//    public LuchadoresFragment(DrawerLayout drawer, FragmentManager fragmentManager, ActionBarDrawerToggle actionBarDrawerToggle, NavigationView navigationView, Toolbar toolbar)
+//    {
+//        this.drawerLayout = drawer;
+//        this.actionBarDrawerToggle = actionBarDrawerToggle;
+//        this.fragmentManager = fragmentManager;
+//        this.navigationView = navigationView;
+//        this.toolbar = toolbar;
+//    }
 
     @Nullable
     @Override

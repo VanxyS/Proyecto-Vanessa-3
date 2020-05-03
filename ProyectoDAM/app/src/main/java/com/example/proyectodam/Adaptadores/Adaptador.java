@@ -50,7 +50,7 @@ public class Adaptador extends BaseAdapter
 
         imageView.setImageResource(item.getImagen());
         textView.setText(item.getTitulo());
-        textView1.setText(item.getSubtitulo());
+        textView1.setText(item.getSubtitulo() + " " + item.getApellido2());
 
         return convertView;
     }

@@ -28,7 +28,7 @@ public class EliminarLuchador extends Fragment
         final ListView listView = view.findViewById(R.id.listLuchadoresEliminar);
         Button button = view.findViewById(R.id.buttonEliminarLuchador);
 
-        apiMethods.listarLuchadores("http://192.168.1.39/ProyectoDAM/listaLuchadores.php", listView, getActivity().getApplicationContext());
+        apiMethods.listarLuchadores("http://192.168.1.35/ProyectoDAM/listaLuchadores.php", listView, getActivity().getApplicationContext());
 
         button.setOnClickListener(new View.OnClickListener()
         {
@@ -36,9 +36,9 @@ public class EliminarLuchador extends Fragment
             public void onClick(View v) {
                 APIMethods apiMethods = new APIMethods();
 
-                apiMethods.eliminarLuchador(getActivity().getApplicationContext(),"http://192.168.1.39/ProyectoDAM/eliminarLuchador.php", nombre.getText().toString(), apellido1.getText().toString());
+                apiMethods.eliminarLuchador(getActivity().getApplicationContext(),"http://192.168.1.35/ProyectoDAM/eliminarLuchador.php", nombre.getText().toString(), apellido1.getText().toString());
 
-                apiMethods.listarLuchadores("http://192.168.1.39/ProyectoDAM/listaLuchadores.php", listView, getActivity().getApplicationContext());
+                apiMethods.listarLuchadores("http://192.168.1.35/ProyectoDAM/listaLuchadores.php", listView, getActivity().getApplicationContext());
             }
         });
 

@@ -17,12 +17,16 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.proyectodam.APIMethods;
+import com.example.proyectodam.Items.Usuario;
 import com.example.proyectodam.R;
+
+import java.util.ArrayList;
 
 public class ModificarPermisos extends Fragment
 {
     APIMethods apiMethods = new APIMethods();
     String idRol = "";
+    ArrayList<Usuario> usuarios;
 
     @Nullable
     @Override
@@ -30,9 +34,11 @@ public class ModificarPermisos extends Fragment
     {
         final View view = inflater.inflate(R.layout.fragment_modificar_permisos, container, false);
 
-        ListView listView = view.findViewById(R.id.listUsuarios);
+        final ListView listView = view.findViewById(R.id.listUsuarios);
 
-        apiMethods.listarUsuarios(getActivity().getApplicationContext(), "http://192.168.1.39/ProyectoDAM/listaUsuarios.php", listView);
+        usuarios = new ArrayList<Usuario>();
+
+        apiMethods.listarUsuarios(getActivity().getApplicationContext(), "http://192.168.1.35/ProyectoDAM/listaUsuarios.php", listView);
 
         final EditText usuario = view.findViewById(R.id.usuarioEliminar);
 
@@ -72,12 +78,14 @@ public class ModificarPermisos extends Fragment
                 {
                     String nombre = usuario.getText().toString();
                     System.out.println(usuario.getText().toString());
-                    apiMethods.modificarPermisos(getActivity().getApplicationContext(), "http://192.168.1.39/ProyectoDAM/modificarPermisos.php", nombre, idRol);
+                    apiMethods.modificarPermisos(getActivity().getApplicationContext(), "http://192.168.1.35/ProyectoDAM/modificarPermisos.php", nombre, idRol);
                 }
                 else
                     {
                         Toast.makeText(getActivity().getApplicationContext(), "No hay ningun usuario", Toast.LENGTH_LONG).show();
                     }
+
+                apiMethods.listarUsuarios(getActivity().getApplicationContext(), "http://192.168.1.35/ProyectoDAM/listaUsuarios.php", listView);
             }
         });
 

@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity
         if(!sharedPreferences.getString("preferencias", "NULL").equals("NULL"))
         {
             editusuario.setText(sharedPreferences.getString("preferencias", ""));
+            checkBox.setChecked(true);
         }
 
         registro.setOnClickListener(new View.OnClickListener()
@@ -84,7 +85,7 @@ public class MainActivity extends AppCompatActivity
                             editor.commit();
                         }
 
-                    api.validarUsuario(MainActivity.this, "http://192.168.1.39/ProyectoDAM/login.php", usuario, contrasenia);
+                    api.validarUsuario(MainActivity.this, "http://192.168.1.35/ProyectoDAM/login.php", usuario, contrasenia);
                 }
                 else
                 {

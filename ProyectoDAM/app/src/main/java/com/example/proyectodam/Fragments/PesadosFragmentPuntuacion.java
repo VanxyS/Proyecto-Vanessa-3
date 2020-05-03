@@ -22,7 +22,7 @@ public class PesadosFragmentPuntuacion extends Fragment
 
         APIMethods apiMethods = new APIMethods();
 
-        apiMethods.listarPesadosPuntuacion("http://192.168.1.39/ProyectoDAM/listarPuntuacion.php", listView, getActivity().getApplicationContext());
+        apiMethods.listarPesadosPuntuacion("http://192.168.1.35/ProyectoDAM/listarPuntuacion.php", listView, getActivity().getApplicationContext());
 
         // Inflate the layout for this fragment
         return view;

@@ -31,7 +31,7 @@ public class ModificarCorro extends Fragment
 
         final ListView listView = view.findViewById(R.id.listCorrosActuales);
 
-        apiMethods.listarCorros("http://192.168.1.39/ProyectoDAM/listarCorros.php", listView, getActivity().getApplicationContext());
+        apiMethods.listarCorros("http://192.168.1.35/ProyectoDAM/listarCorros.php", listView, getActivity().getApplicationContext());
 
         final EditText pueblo = view.findViewById(R.id.nombrePuebloModificar);
         final EditText puebloNuevo = view.findViewById(R.id.nuevoNombrePueblo);
@@ -52,12 +52,12 @@ public class ModificarCorro extends Fragment
                     String horaM = hora.getText().toString();
                     String lugarM = lugar.getText().toString();
 
-                    apiMethods.modificarCorro(getActivity().getApplicationContext(), "http://192.168.1.39/ProyectoDAM/modificarCorro.php", nombre, nombreNuevo, diaM, horaM, lugarM);
-                    apiMethods.listarCorros("http://192.168.1.39/ProyectoDAM/listarCorros.php", listView, getActivity().getApplicationContext());
+                    apiMethods.modificarCorro(getActivity().getApplicationContext(), "http://192.168.1.35/ProyectoDAM/modificarCorro.php", nombre, nombreNuevo, diaM, horaM, lugarM);
+                    apiMethods.listarCorros("http://192.168.1.35/ProyectoDAM/listarCorros.php", listView, getActivity().getApplicationContext());
             }
         });
 
-        apiMethods.listarCorros("http://192.168.1.39/ProyectoDAM/listarCorros.php", listView, getActivity().getApplicationContext());
+        apiMethods.listarCorros("http://192.168.1.35/ProyectoDAM/listarCorros.php", listView, getActivity().getApplicationContext());
 
         // Inflate the layout for this fragment
         return view;

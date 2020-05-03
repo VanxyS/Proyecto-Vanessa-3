@@ -9,6 +9,7 @@ import android.widget.ListView;
 import androidx.fragment.app.Fragment;
 
 import com.example.proyectodam.APIMethods;
+import com.example.proyectodam.Items.CircleTextView;
 import com.example.proyectodam.R;
 
 public class LigerosFragmentPuntuacion extends Fragment
@@ -22,7 +23,7 @@ public class LigerosFragmentPuntuacion extends Fragment
 
         APIMethods apiMethods = new APIMethods();
 
-        apiMethods.listarLigerosPuntuacion("http://192.168.1.39/ProyectoDAM/listarPuntuacion.php", listView, getActivity().getApplicationContext());
+        apiMethods.listarLigerosPuntuacion("http://192.168.1.35/ProyectoDAM/listarPuntuacion.php", listView, getActivity().getApplicationContext());
 
         // Inflate the layout for this fragment
         return view;

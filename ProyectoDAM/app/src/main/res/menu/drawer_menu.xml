@@ -59,10 +59,6 @@
                 android:title="Cambiar Puntuación" />
 
             <item
-                android:id="@+id/quitarLuchador"
-                android:title="Quitar Luchador" />
-
-            <item
                 android:id="@+id/salirAdministrador"
                 android:title="Salir" />
         </menu>

@@ -1,8 +1,10 @@
 package com.example.proyectodam;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -10,6 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+
+import java.util.regex.Pattern;
 
 public class Registro extends Activity
 {
@@ -25,7 +29,7 @@ public class Registro extends Activity
         final EditText editnombre = findViewById(R.id.diaAniadir);
         final EditText editcontrasenia = findViewById(R.id.horaAniadir);
         final EditText editemail = findViewById(R.id.editText);
-        TextView textView = findViewById(R.id.textLuchador);
+        //TextView textView = findViewById(R.id.textLuchador);
 
         registro.setOnClickListener(new View.OnClickListener()
         {
@@ -38,7 +42,19 @@ public class Registro extends Activity
 
                 if(!nombre.isEmpty() && !contrasenia.isEmpty() && !email.isEmpty())
                 {
-                    api.registrarUsuario(Registro.this, "http://192.168.1.39/ProyectoDAM/registrar.php",nombre, contrasenia, email);
+                    boolean comprobar;
+
+                    Pattern pattern = Patterns.EMAIL_ADDRESS;
+                    comprobar = pattern.matcher(email).matches();
+
+                    if(comprobar)
+                    {
+                        api.comprobarUsuario(Registro.this, "http://192.168.1.35/ProyectoDAM/comprobarUsuario.php", nombre, contrasenia, email);
+                    }
+                    else
+                        {
+                            editemail.setError("Email no válido");
+                        }
                 }
                 else
                 {
@@ -47,14 +63,14 @@ public class Registro extends Activity
             }
         });
 
-        textView.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                Intent intent = new Intent(getApplicationContext(), RegistrarLuchador.class);
-                startActivity(intent);
-            }
-        });
+//        textView.setOnClickListener(new View.OnClickListener()
+//        {
+//            @Override
+//            public void onClick(View v)
+//            {
+//                Intent intent = new Intent(getApplicationContext(), RegistrarLuchador.class);
+//                startActivity(intent);
+//            }
+//        });
     }
 }

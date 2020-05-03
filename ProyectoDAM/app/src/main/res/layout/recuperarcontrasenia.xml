@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animationCache="false"
-    android:background="@android:color/background_dark">
+    android:background="@drawable/indice">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -40,8 +40,9 @@
 
         <Button
             android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:background="@drawable/custom_button"
             android:text="ENVIAR CORREO" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -22,15 +22,18 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.proyectodam.Adaptadores.Adaptador;
 import com.example.proyectodam.Adaptadores.AdaptadorCorros;
+import com.example.proyectodam.Adaptadores.AdapterUsuario;
 import com.example.proyectodam.Adaptadores.AdaptorPuntuacion;
 import com.example.proyectodam.Items.Item;
 import com.example.proyectodam.Items.ItemCorro;
 import com.example.proyectodam.Items.ItemPuntuacion;
+import com.example.proyectodam.Items.Usuario;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -46,6 +49,7 @@ public class APIMethods
             @Override
             public void onResponse(String response)
             {
+                System.out.println(response);
                 if(!response.isEmpty())
                 {
                     try
@@ -105,6 +109,67 @@ public class APIMethods
         queue.add(request);
     }
 
+    public void comprobarUsuario(final Context context, String url, final String usuario, final String contrasenia, final String email)
+    {
+        StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>()
+        {
+            @Override
+            public void onResponse(String response)
+            {
+                if(!response.isEmpty())
+                {
+                    System.out.println(response);
+                    try
+                    {
+                        JSONObject objectRegistro = new JSONObject(response);
+                        boolean comprobacionUsuario = objectRegistro.getBoolean("respuesta");
+
+                        if(comprobacionUsuario)
+                        {
+                            registrarUsuario(context, "http://192.168.1.35/ProyectoDAM/registrar.php", usuario, contrasenia, email);
+
+                            Toast.makeText(context, "Se ha enviado un enlace de verificación a su correo", Toast.LENGTH_LONG).show();
+
+                            Intent intent = new Intent(context, MainActivity.class);
+                            context.startActivity(intent);
+                        }
+                        else
+                            {
+                                Toast.makeText(context, "Usuario o email ya existentes", Toast.LENGTH_LONG).show();
+                            }
+                    }
+
+                    catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }, new Response.ErrorListener()
+        {
+            @Override
+            public void onErrorResponse(VolleyError error)
+            {
+                Toast.makeText(context, error.toString(), Toast.LENGTH_LONG).show();
+            }
+        })
+        {
+            @Override
+            protected Map<String, String> getParams()
+            {
+                Map<String, String> parametros = new HashMap<>();
+                parametros.put("nombre", usuario);
+                parametros.put("email", email);
+                return parametros;
+            }
+        };
+
+        request.setRetryPolicy(new DefaultRetryPolicy(MY_DEFAULT_TIMEOUT,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
+        RequestQueue queue = Volley.newRequestQueue(context);
+        queue.add(request);
+    }
+
     public void registrarUsuario(final Context context, String url, final String usuario, final String contrasenia, final String email)
     {
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>()
@@ -114,24 +179,17 @@ public class APIMethods
             {
                 if(!response.isEmpty())
                 {
+                    //System.out.println(response);
                     try
                     {
                         JSONObject objectRegistro = new JSONObject(response);
                         boolean booleano = objectRegistro.getBoolean("respuesta");
 
-                        System.out.println(booleano);
-
-                        if(booleano)
-                        {
-                            Toast.makeText(context, "Se ha registrado el usuario", Toast.LENGTH_LONG).show();
+                            Toast.makeText(context, "Se ha enviado el email de verificación", Toast.LENGTH_LONG).show();
                             Intent salida = new Intent(context, MainActivity.class);
                             context.startActivity(salida);
-                        }
-                        else
-                        {
-                            Toast.makeText(context, "El usuario ya existe", Toast.LENGTH_LONG).show();
-                        }
                     }
+
                     catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -163,6 +221,7 @@ public class APIMethods
         RequestQueue queue = Volley.newRequestQueue(context);
         queue.add(request);
     }
+
 
     public void enviarEmail(final Context context, String url, final String nombre, final TextView textView)
     {
@@ -311,7 +370,7 @@ public class APIMethods
                             String categoria = object.getString("categoria");
 
                             Luchador luchador = new Luchador(nombre, apellido1, apellido2, edad, puntuacion, peso, categoria);
-                            Item item = new Item(R.drawable.a512x512bb, nombre, apellido1 + " " + apellido2);
+                            Item item = new Item(R.drawable.a512x512bb, nombre, apellido1, apellido2, edad, peso, categoria);
 
                             System.out.println(nombre);
 
@@ -394,7 +453,7 @@ public class APIMethods
                             String categoria = object.getString("categoria");
 
                             Luchador luchador = new Luchador(nombre, apellido1, apellido2, edad, puntuacion, peso, categoria);
-                            Item item = new Item(R.drawable.a512x512bb, nombre, apellido1 + " " + apellido2);
+                            Item item = new Item(R.drawable.a512x512bb, nombre, apellido1, apellido2, edad, peso, categoria);
 
                             if(peso.equals("Medios"))
                             {
@@ -478,7 +537,7 @@ public class APIMethods
                             String categoria = object.getString("categoria");
 
                             Luchador luchador = new Luchador(nombre, apellido1, apellido2, edad, puntuacion, peso, categoria);
-                            Item item = new Item(R.drawable.a512x512bb, nombre, apellido1 + " " + apellido2);
+                            Item item = new Item(R.drawable.a512x512bb, nombre, apellido1, apellido2, edad, peso, categoria);
 
                             if(peso.equals("Pesados"))
                             {
@@ -855,7 +914,7 @@ public class APIMethods
         queue.add(request);
     }
 
-    public void eliminarCorro(final Context context, String url, final String pueblo, final String dia, final Fragment fragment)
+    public void eliminarCorro(final Context context, String url, final String pueblo, final String dia)
     {
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>()
         {
@@ -867,6 +926,10 @@ public class APIMethods
                     try
                     {
                         JSONObject object = new JSONObject(response);
+
+                        System.out.println(response);
+                        System.out.println(pueblo);
+                        System.out.println(dia);
 
                         boolean booleano = object.getBoolean("respuesta");
 
@@ -969,7 +1032,7 @@ public class APIMethods
 
     public void listarUsuarios(final Context context, String url, final ListView listView)
                         {
-                            final ArrayList<String> usuarios = new ArrayList<>();
+                            final ArrayList<Usuario> usuarios = new ArrayList<>();
 
                             StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>()
                             {
@@ -987,13 +1050,17 @@ public class APIMethods
                                                 JSONObject object = jsonArray.getJSONObject(i);
 
                                                 String nombre = object.getString("nombre");
+                                                String rol = object.getString("rol");
 
-                                                usuarios.add(nombre);
+                                                Usuario usuario = new Usuario(nombre, rol);
+
+                                                usuarios.add(usuario);
                                             }
+                                            AdapterUsuario adapterUsuario = new AdapterUsuario(context, usuarios);
+                                            listView.setAdapter(adapterUsuario);
+                                            //ArrayAdapter<Usuario> adapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, usuarios);
 
-                                            ArrayAdapter<String> adapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, usuarios);
-
-                                            listView.setAdapter(adapter);
+                                            //listView.setAdapter(adapter);
                     }
                     catch (JSONException e) {
                         e.printStackTrace();
@@ -1225,7 +1292,7 @@ public class APIMethods
                             String categoria = object.getString("categoria");
 
                             Luchador luchador = new Luchador(nombre, apellido1, apellido2, edad, puntuacion, peso, categoria);
-                            Item item = new Item(R.drawable.a512x512bb, nombre, apellido1 + " " + apellido2);
+                            Item item = new Item(R.drawable.a512x512bb, nombre, apellido1, apellido2, edad, peso, categoria);
 
                             items.add(item);
                         }

@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.proyectodam.Items.CircleTextView;
 import com.example.proyectodam.Items.ItemPuntuacion;
 import com.example.proyectodam.R;
 
@@ -46,7 +47,11 @@ public class AdaptorPuntuacion extends BaseAdapter
         ImageView imageView = convertView.findViewById(R.id.viewFoto);
         TextView textView = convertView.findViewById(R.id.tituloPuntuacion);
         TextView textView1 = convertView.findViewById(R.id.subtituloPuntuacion);
-        TextView textView2 = convertView.findViewById(R.id.puntuacion);
+        CircleTextView textView2 = convertView.findViewById(R.id.puntuacion);
+
+        textView2.setStrokeWidth(4);
+        textView2.setStrokeColor("#000000");
+        textView2.setSolidColor("#FF0000");
 
         imageView.setImageResource(item.getImagen());
         textView.setText(item.getTituloPuntuacion());

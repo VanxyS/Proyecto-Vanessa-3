@@ -28,7 +28,7 @@ public class ModificarLuchador extends Fragment
 
         final ListView listView = view.findViewById(R.id.listLuchadoresActuales);
 
-        apiMethods.listarLuchadores("http://192.168.1.39/ProyectoDAM/listaLuchadores.php", listView, getActivity().getApplicationContext());
+        apiMethods.listarLuchadores("http://192.168.1.35/ProyectoDAM/listaLuchadores.php", listView, getActivity().getApplicationContext());
 
         final EditText nombre = view.findViewById(R.id.nombreLuchadorModificar);
         final EditText apellido = view.findViewById(R.id.apellidoLuchadorModificar);
@@ -55,13 +55,13 @@ public class ModificarLuchador extends Fragment
                 String pesoN = peso.getText().toString();
                 String categoriaN = categoria.getText().toString();
 
-                apiMethods.modificarLuchador(getActivity().getApplicationContext(), "http://192.168.1.39/ProyectoDAM/modificarLuchador.php",
+                apiMethods.modificarLuchador(getActivity().getApplicationContext(), "http://192.168.1.35/ProyectoDAM/modificarLuchador.php",
                         nombreL, apellidoL, nombreN, apellidoN, apellido2N, edaN, pesoN, categoriaN);
-                apiMethods.listarLuchadores("http://192.168.1.39/ProyectoDAM/listaLuchadores.php", listView, getActivity().getApplicationContext());
+                apiMethods.listarLuchadores("http://192.168.1.35/ProyectoDAM/listaLuchadores.php", listView, getActivity().getApplicationContext());
             }
         });
 
-        apiMethods.listarLuchadores("http://192.168.1.39/ProyectoDAM/listaLuchadores.php", listView, getActivity().getApplicationContext());
+        apiMethods.listarLuchadores("http://192.168.1.35/ProyectoDAM/listaLuchadores.php", listView, getActivity().getApplicationContext());
 
         // Inflate the layout for this fragment
         return view;

@@ -1,16 +1,17 @@
 <?php
+    //$usu = $_POST['usuario'];
+	//$contrasenia = $_POST['contrasenia'];
     $booleano = false;
     $idPeso = 0;
     $idCategoria = 0;
 
-
 	//Recibimos el nombre, la contrasenia y el email
-	$nombre=$_GET["nombre"];
-    $apellido1=$_GET["apellido1"];
-    $apellido2=$_GET["apellido2"];
-    $edad=$_GET["edad"];
-    $peso=$_GET["peso"];
-    $categoria=$_GET["categoria"];
+	$nombre=$_POST["nombre"];
+    $apellido1=$_POST["apellido1"];
+    $apellido2=$_POST["apellido2"];
+    $edad=$_POST["edad"];
+    $peso=$_POST["peso"];
+    $categoria=$_POST["categoria"];
 
 	//Conectamos a la base de datos
     $conexion= mysqli_connect("localhost", "vanessa", "vanessasantospuente", "proyectodam");
@@ -36,6 +37,8 @@
 			echo $error;
         }
 
+        //print($idPeso);
+
     //Hacemos otra consulta para comprobar la categoría a la que pertenece
     $consultaCategoria="SELECT * FROM categorias WHERE Nombre LIKE '$categoria'";
     $result3 = mysqli_query($conexion, $consultaCategoria);
@@ -50,42 +53,37 @@
 
             $idCategoria = $row2['idCategoria'];
         }
-        else
-        {
-            print("Filas no encontradas");
-        }
     }
     else
 		{
 			$error = mysqli_error($conexion);
 			echo $error;
-		}
+        }
+        //print($idCategoria);
 
-    //Hacemos una consulta para comprobar si existe algun luchador con ese nombre
+    //Hacemos una consulta para comprobar si existe algun luchador con ese nombre y apellidos
 	$consulta="SELECT * FROM luchadores WHERE Nombre LIKE '$nombre' AND Apellido1 LIKE '$apellido1' AND Apellido2 LIKE '$apellido2'";
     $result = mysqli_query($conexion, $consulta);
 
 	if($result)
 	{
-		$filas = mysqli_num_rows($result);
+        $filas = mysqli_num_rows($result);
+        
+        //print($filas);
 
 		if($filas == 0)
 		{
 			//Insertarmos los datos (por defecto los nuevos registros son usuarios normales)
 			$sql="INSERT INTO luchadores (Nombre, Apellido1, Apellido2, Edad, Puntuacion, idPeso, idCategoria) 
-            VALUES ('$nombre', '$apellido1', '$apellido2', $edad, 0, $idPeso, $idCategoria)";					
-			$resultado=mysqli_query($conexion, $sql);
+            VALUES ('$nombre', '$apellido1', '$apellido2', $edad, 0, $idPeso, $idCategoria)";
+
+            $resultado=mysqli_query($conexion, $sql);
 
 			//Si se ha insertado el luchador devolvemos un true
 			if($resultado > 0)
 			{
 				$booleano = true;
             }
-            //Si no devolvemos false
-			else
-			{
-				$booleano = false;
-			}
 		}
 	}
 

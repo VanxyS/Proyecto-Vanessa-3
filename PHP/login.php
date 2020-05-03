@@ -1,6 +1,8 @@
 <?php
-	$usu = $_GET['usuario'];
-	$contrasenia = $_GET['contrasenia'];
+	$usu = $_POST['usuario'];
+	$contrasenia = $_POST['contrasenia'];
+	$contraseniaSalida = '';
+	$nombre = '';
 	$idRol = 0;
 	$booleano = false;
 	$roles = '';
@@ -34,6 +36,8 @@
 
 				$contraseniaBD = $row['contrasenia'];
 
+				$email = $row['email'];
+
 				list($contraseniaBD, $enc_iv) = explode("::", $contraseniaBD);;
 				$cipher_method = 'aes-128-ctr';
 				$enc_key = openssl_digest(php_uname(), 'SHA256', TRUE);
@@ -46,6 +50,10 @@
 
 					$idRol = $row['idRol'];
 
+					$nombre = $row['nombre'];
+
+					$contraseniaSalida = $contrasenia; 
+
 					if($idRol == 1)
 					{
 						//echo "usuario";
@@ -56,6 +64,11 @@
 					{
 						//echo "administrador";
 						$roles = 'administrador';
+					}
+					else if($idRol == 3)
+					{
+						//echo "administrador";
+						$roles = 'luchador';
 					}
 				}
 			}
@@ -70,6 +83,9 @@
 		$response = array();
 		$response["success"] = $booleano;
 		$response["roles"] = $roles;
+		$response["nombre"] = $nombre;
+		$response["email"] = $email;
+		$response["contrasenia"] = $contraseniaSalida;
 		//echo json_encode($response);
 		//print($idRol);
 		//print($roles);

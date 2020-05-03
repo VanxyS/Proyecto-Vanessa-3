@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:title="Item" />
-    <item android:title="Item" />
-    <item android:title="Item" />
+    <item android:title="Eliminar Corro"
+        android:id="@+id/eliminarCorroCorros"/>
+    <item android:title="Modificar Corro"
+        android:id="@+id/modificarCorroCorros"/>
 </menu>

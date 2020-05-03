@@ -50,10 +50,13 @@
 
         <Button
             android:id="@+id/acceso"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
             android:layout_marginBottom="20px"
-            android:text="Entrar" />
+            android:background="@drawable/custom_button"
+            android:text="Entrar"
+            android:textSize="15sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textView"
@@ -67,9 +70,11 @@
 
         <Button
             android:id="@+id/registrarse"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Registrarse" />
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:background="@drawable/custom_button"
+            android:text="Registrarse"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/olvidoContrasenia"

@@ -32,7 +32,7 @@ public class ModificarPuntuacion extends Fragment
 
         final ListView listView = view.findViewById(R.id.listLuchadoresPuntuacion);
 
-        apiMethods.listarLuchadoresPuntuacion("http://192.168.1.39/ProyectoDAM/listaLuchadores.php", listView, getActivity().getApplicationContext());
+        apiMethods.listarLuchadoresPuntuacion("http://192.168.1.35/ProyectoDAM/listaLuchadores.php", listView, getActivity().getApplicationContext());
 
         final EditText nombre = view.findViewById(R.id.luchadorAniadirPuntuacion);
         final EditText apellido1 = view.findViewById(R.id.apellido1Sumar);
@@ -52,23 +52,23 @@ public class ModificarPuntuacion extends Fragment
 
                 switch (idRadioButtonActivo)
                 {
-                    case 2131231000:
+                    case 2131231022:
                         puntos = "10";
                         break;
 
-                    case 2131231001:
+                    case 2131231023:
                         puntos = "8";
                         break;
 
-                    case 2131231002:
+                    case 2131231024:
                         puntos = "6";
                         break;
 
-                    case 2131230999:
+                    case 2131231021:
                         puntos = "4";
                         break;
 
-                    case 2131230982:
+                    case 2131231004:
                         puntos = "2";
                         break;
 
@@ -82,14 +82,16 @@ public class ModificarPuntuacion extends Fragment
                     String nombreLuchador = nombre.getText().toString();
                     String apellidoLuchador = apellido1.getText().toString();
                     System.out.println(nombre.getText().toString());
-                    apiMethods.modificarPuntuacion(getActivity().getApplicationContext(), "http://192.168.1.39/ProyectoDAM/cambiarPuntuacion.php", nombreLuchador, apellidoLuchador, puntos);
+                    apiMethods.modificarPuntuacion(getActivity().getApplicationContext(), "http://192.168.1.35/ProyectoDAM/cambiarPuntuacion.php", nombreLuchador, apellidoLuchador, puntos);
+
+                    apiMethods.listarLuchadoresPuntuacion("http://192.168.1.35/ProyectoDAM/listaLuchadores.php", listView, getActivity().getApplicationContext());
                 }
                 else
                 {
                     Toast.makeText(getActivity().getApplicationContext(), "No hay ningun usuario", Toast.LENGTH_LONG).show();
                 }
 
-                apiMethods.listarLuchadores("http://192.168.1.39/ProyectoDAM/listaLuchadores.php", listView, getActivity().getApplicationContext());
+                apiMethods.listarLuchadoresPuntuacion("http://192.168.1.35/ProyectoDAM/listaLuchadores.php", listView, getActivity().getApplicationContext());
             }
         });
 

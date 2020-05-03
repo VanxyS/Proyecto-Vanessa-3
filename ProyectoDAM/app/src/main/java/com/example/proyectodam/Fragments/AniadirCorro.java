@@ -32,7 +32,7 @@ public class AniadirCorro extends Fragment
 
         final ListView listView = view.findViewById(R.id.listCorros);
 
-        apiMethods.listarCorros("http://192.168.1.39/ProyectoDAM/listarCorros.php", listView, getActivity().getApplicationContext());
+        apiMethods.listarCorros("http://192.168.1.35/ProyectoDAM/listarCorros.php", listView, getActivity().getApplicationContext());
 
         button.setOnClickListener(new View.OnClickListener()
         {
@@ -46,15 +46,15 @@ public class AniadirCorro extends Fragment
 
                 if(!pueblo.getText().toString().isEmpty() && !dia.getText().toString().isEmpty() && !hora.getText().toString().isEmpty() &&!lugar.getText().toString().isEmpty())
                 {
-                    apiMethods.registrarCorro(getActivity().getApplicationContext(),"http://192.168.1.39/ProyectoDAM/registrarCorro.php", puebloNuevo, diaNuevo, horaNueva, lugarNuevo);
+                    apiMethods.registrarCorro(getActivity().getApplicationContext(),"http://192.168.1.35/ProyectoDAM/registrarCorro.php", puebloNuevo, diaNuevo, horaNueva, lugarNuevo);
 
-                    apiMethods.listarCorros("http://192.168.1.39/ProyectoDAM/listarCorros.php", listView, getActivity().getApplicationContext());
+                    apiMethods.listarCorros("http://192.168.1.35/ProyectoDAM/listarCorros.php", listView, getActivity().getApplicationContext());
                 }
                 else Toast.makeText(getActivity().getApplicationContext(), "No se admiten campos vacions", Toast.LENGTH_LONG).show();
             }
         });
 
-        apiMethods.listarCorros("http://192.168.1.39/ProyectoDAM/listarCorros.php", listView, getActivity().getApplicationContext());
+        apiMethods.listarCorros("http://192.168.1.35/ProyectoDAM/listarCorros.php", listView, getActivity().getApplicationContext());
 
         // Inflate the layout for this fragment
         return view;

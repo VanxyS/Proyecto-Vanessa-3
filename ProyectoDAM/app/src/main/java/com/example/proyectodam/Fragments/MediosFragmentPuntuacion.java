@@ -22,7 +22,7 @@ public class MediosFragmentPuntuacion extends Fragment
 
         APIMethods apiMethods = new APIMethods();
 
-        apiMethods.listarMediosPuntuacion("http://192.168.1.39/ProyectoDAM/listarPuntuacion.php", listView, getActivity().getApplicationContext());
+        apiMethods.listarMediosPuntuacion("http://192.168.1.35/ProyectoDAM/listarPuntuacion.php", listView, getActivity().getApplicationContext());
 
         // Inflate the layout for this fragment
         return view;

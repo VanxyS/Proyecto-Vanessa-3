@@ -28,7 +28,7 @@ public class EliminarCorro extends Fragment
         Button button = view.findViewById(R.id.button2);
         final ListView listView = view.findViewById(R.id.listCorros);
 
-        apiMethods.listarCorros("http://192.168.1.39/ProyectoDAM/listarCorros.php", listView, getActivity().getApplicationContext());
+            apiMethods.listarCorros("http://192.168.1.35/ProyectoDAM/listarCorros.php", listView, getActivity().getApplicationContext());
 
         button.setOnClickListener(new View.OnClickListener()
         {
@@ -36,11 +36,13 @@ public class EliminarCorro extends Fragment
             public void onClick(View v) {
                 APIMethods apiMethods = new APIMethods();
 
-                apiMethods.eliminarCorro(getActivity().getApplicationContext(),"http://192.168.1.39/ProyectoDAM/eliminarCorro.php", pueblo.getText().toString(), dia.getText().toString(), EliminarCorro.this);
+                apiMethods.eliminarCorro(getActivity().getApplicationContext(),"http://192.168.1.35/ProyectoDAM/eliminarCorro.php", pueblo.getText().toString(), dia.getText().toString());
 
-                apiMethods.listarCorros("http://192.168.1.39/ProyectoDAM/listarCorros.php", listView, getActivity().getApplicationContext());
+                apiMethods.listarCorros("http://192.168.1.35/ProyectoDAM/listarCorros.php", listView, getActivity().getApplicationContext());
             }
         });
+
+        apiMethods.listarCorros("http://192.168.1.35/ProyectoDAM/listarCorros.php", listView, getActivity().getApplicationContext());
 
         // Inflate the layout for this fragment
         return view;

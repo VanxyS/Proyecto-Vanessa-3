@@ -123,7 +123,7 @@ public class Drawer extends AppCompatActivity implements NavigationView.OnNaviga
             case R.id.luchadores:
                 fragmentManager = getSupportFragmentManager();
                 fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.container_fragment, new LuchadoresFragment(drawerLayout, fragmentManager, actionBarDrawerToggle, navigationView, toolbar));
+                fragmentTransaction.replace(R.id.container_fragment, new LuchadoresFragment());
                 fragmentTransaction.commit();
                 break;
 
